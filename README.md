@@ -1,5 +1,5 @@
 # What Do You Wana Eat?
-> Work in Progress
+**Work in Progress**
 
 *A simple site designed to help you solve the age old question, What Do You Wana Eat?*
 
