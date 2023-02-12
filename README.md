@@ -11,7 +11,7 @@
 # Media
 
 ## Home View
-![Home](https://i.imgur.com/zi7XOGG.png)
+![Home](https://i.imgur.com/eO0TrEV.png)
 
 ## Search View
 ![Search](https://i.imgur.com/ElTOZH6.png)
