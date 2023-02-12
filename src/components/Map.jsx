@@ -85,13 +85,6 @@ const MapContainer = () => {
       map: map,
       position: place.geometry.location,
       title: place.name,
-      // icon: {
-      //   url: place.icon,
-      //   size: new window.google.maps.Size(71, 71),
-      //   origin: new window.google.maps.Point(0, 0),
-      //   anchor: new window.google.maps.Point(17, 34),
-      //   scaledSize: new window.google.maps.Size(25, 25),
-      // },
     });
 
     window.google.maps.event.addListener(marker, "click", () => {
@@ -114,7 +107,6 @@ const MapContainer = () => {
         A simple site designed to help you solve the age old question, What Do
         You Wana Eat?
       </p>
-      {/* <p>Fill out all fields and get a random place near you to eat at!</p> */}
       <form className="form-container" onSubmit={handleSubmit}>
         <label>Enter a Location: </label>
         <input
