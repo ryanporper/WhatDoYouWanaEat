@@ -5,4 +5,5 @@
 
 ## Built using:
 - React.js
+- CSS
 - Google Maps API
