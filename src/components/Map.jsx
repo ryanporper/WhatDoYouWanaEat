@@ -3,6 +3,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
+import star from "../images/icon-star.svg";
+import dollarsign from "../images/dollar-sign.svg";
+
 const MapContainer = () => {
   const [location, setLocation] = useState("");
   const [rad, setRad] = useState(500);
@@ -48,6 +51,7 @@ const MapContainer = () => {
           service.nearbySearch(request, (results, status) => {
             if (status === maps.places.PlacesServiceStatus.OK) {
               const randPlace = Math.floor(Math.random() * results.length);
+              // check if rating < minRating or price is > maxPrice
               if (
                 results[randPlace].rating < minRating ||
                 results[randPlace].price_level > maxPrice
@@ -60,6 +64,7 @@ const MapContainer = () => {
                   "Name:",
                   results[randPlace].name
                 );
+                // reload func to get new place
                 loadMap();
                 return;
               }
@@ -109,7 +114,7 @@ const MapContainer = () => {
         A simple site designed to help you solve the age old question, What Do
         You Wana Eat?
       </p>
-      <p>Fill out all fields and get a random place near you to eat at!</p>
+      {/* <p>Fill out all fields and get a random place near you to eat at!</p> */}
       <form className="form-container" onSubmit={handleSubmit}>
         <label>Enter a Location: </label>
         <input
@@ -120,8 +125,6 @@ const MapContainer = () => {
           placeholder="City, State or Location"
           required
         />
-        <label>Enter a search radius</label>
-        {/* <p>(0-1000 | 500 is a good avg)</p> */}
         <label>Radius: {rad}</label>
         <input
           className="slider"
@@ -131,7 +134,7 @@ const MapContainer = () => {
           max="5000"
           onChange={(e) => setRad(e.target.value)}
         />
-        <label>Min rating {minRating}</label>
+        <label>Min rating: {minRating}</label>
         <input
           className="slider"
           type="range"
@@ -140,7 +143,7 @@ const MapContainer = () => {
           max="5"
           onChange={(e) => setMinRating(e.target.value)}
         />
-        <label>Max price {maxPrice}</label>
+        <label>Max price: {maxPrice}</label>
         <input
           className="slider"
           type="range"
@@ -149,31 +152,36 @@ const MapContainer = () => {
           max="5"
           onChange={(e) => setMaxPrice(e.target.value)}
         />
-        <button type="submit">Generate</button>
+        <button className="gen-btn" type="submit">
+          Generate
+        </button>
       </form>
       {showRestaurant && (
         <div className="restuarant-list-container">
           <h2>{showRestaurant.name}</h2>
-          <h3>
-            Pricing:{" "}
-            {showRestaurant.price_level
-              ? showRestaurant.price_level + "/5"
-              : "No pricing available :("}
-          </h3>
-          <h3>
-            Rating:{" "}
-            {showRestaurant.rating
-              ? showRestaurant.rating + "/5"
-              : "No rating available :("}
-          </h3>
-          <p>Business Status: {showRestaurant.business_status}</p>
-          <p>Check it out on Google Maps Below!</p>
+          <ul>
+            <li>
+              <img src={dollarsign} alt="star" />
+              Pricing:{" "}
+              {showRestaurant.price_level
+                ? showRestaurant.price_level + "/5"
+                : "No pricing available :("}
+            </li>
+            <li>
+              <img src={star} alt="star" />
+              Rating:{" "}
+              {showRestaurant.rating
+                ? showRestaurant.rating + "/5"
+                : "No rating available :("}
+              {}
+            </li>
+            <li>Business Status: {showRestaurant.business_status}</li>
+            <li>Check it out on Google Maps Below!</li>
+          </ul>
         </div>
       )}
-      <div className="map-container">
-        {/* this div draws the map */}
-        <div id="map" />
-      </div>
+      {/* this div draws the map */}
+      <div id="map" />
     </div>
   );
 };
