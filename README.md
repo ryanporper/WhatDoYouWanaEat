@@ -15,3 +15,9 @@
 
 ## Search View
 ![Search](https://i.imgur.com/ElTOZH6.png)
+
+## Search Gif
+![Search](https://i.imgur.com/HSo0Lf1.gif)
+
+## Regenerating Searches
+![Search](https://i.imgur.com/18Kllkn.gif)
