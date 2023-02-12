@@ -7,3 +7,11 @@
 - React.js
 - CSS
 - Google Maps API
+
+# Media
+
+## Home View
+![Home](https://i.imgur.com/zi7XOGG.png)
+
+## Search View
+![Search](https://i.imgur.com/ElTOZH6.png)
