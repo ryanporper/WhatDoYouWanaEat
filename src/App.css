@@ -1,21 +1,91 @@
 .App {
   text-align: center;
+  padding: 5px;
 }
 
-/* .container {
-  outline: solid 2px blue;
-} */
+button {
+  cursor: pointer;
+  border-radius: 25px;
+  height: 40px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 2px 2px 2px #000;
+  background-color: #96cbf7;
+  color: white;
+  text-shadow: 2px 2px 2px #000;
+}
 
-.restuarant-list-container {
-  display: flex;
+button:hover {
+  background-color: #003b6b;
+}
+
+label {
+  font-weight: bold;
+  font-size: 20px;
+  color: #158ff3;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: 2px 2px 2px #045aa0;
+  color: #158ff3;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: #158ff3;
+  text-shadow: 2px 2px 2px #045aa0;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 20px;
+  color: #158ff3;
+}
+
+p {
+  font-size: 20px;
+  color: #158ff3;
+}
+
+#map {
+  height: 750px;
+  width: 100%;
+}
+
+.map-container {
+  margin-top: 20px;
+  /* border: 10px solid #96cbf7;
+  border-radius: 10px; */
+}
+
+.form-container {
+  display: grid;
   justify-content: center;
-  align-items: center;
-  /* padding: 5px; */
+  text-align: center;
+  gap: 5px;
 }
 
-.restuarant-list-container p {
-  display: flex;
-  list-style: none;
-  /* margin-right: 15px; */
+.form-container p {
+  margin: -4px;
   font-size: 15px;
+}
+
+.slider {
+  cursor: pointer;
+  height: 25px;
+}
+
+.location-input {
+  height: 25px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #048dfdad;
+  color: #158ff3;
+}
+
+.location-input:hover {
+  box-shadow: 2px 2px 10px #008cff91;
 }
