@@ -14,6 +14,7 @@ const MapContainer = () => {
   const [map, setMap] = useState(null);
   const [infowindow, setInfowindow] = useState(null);
   const [showRestaurant, setShowRestaurant] = useState(null);
+  const [autocomplete, setAutocomplete] = useState(null);
 
   useEffect(() => {
     loadMap();
@@ -29,6 +30,18 @@ const MapContainer = () => {
       const maps = window.google.maps;
       const mapNode = document.getElementById("map");
       const geocoder = new maps.Geocoder();
+      // Create the autocomplete object
+      const autocomplete = new maps.places.Autocomplete(
+        document.getElementById("autocomplete"),
+        { types: ["geocode"] }
+      );
+      // Store the autocomplete object
+      setAutocomplete(autocomplete);
+      // Add event listener to update the location when a place is selected
+      maps.event.addListener(autocomplete, "place_changed", () => {
+        const place = autocomplete.getPlace();
+        setLocation(place.formatted_address);
+      });
       geocoder.geocode({ address: location }, (results, status) => {
         if (status === "OK") {
           const mapConfig = {
@@ -57,12 +70,12 @@ const MapContainer = () => {
                 results[randPlace].price_level > maxPrice
               ) {
                 console.log(
+                  "Name:",
+                  results[randPlace].name,
                   "Finding new place Rating: ",
                   results[randPlace].rating,
                   "Price: ",
-                  results[randPlace].price_level,
-                  "Name:",
-                  results[randPlace].name
+                  results[randPlace].price_level
                 );
                 // reload func to get new place
                 loadMap();
@@ -86,18 +99,25 @@ const MapContainer = () => {
       position: place.geometry.location,
       title: place.name,
     });
+    // set map center to marker position
+    map.setCenter(marker.getPosition());
 
-    window.google.maps.event.addListener(marker, "click", () => {
-      infowindow.setContent(
-        `<div>
+    window.google.maps.event.addListener(
+      marker,
+      "click",
+      () => {
+        infowindow.setContent(
+          `<div>
 				<strong>${place.name}</strong>
 				<br />
 				${place.vicinity}
 				</div>
 				<a target='_blank' href=https://maps.google.com/?q=${place.name}>View on Google Maps</a>`
-      );
-      infowindow.open(map, marker);
-    });
+        );
+        infowindow.open(map, marker);
+      },
+      { passive: true }
+    );
   };
 
   return (
@@ -111,6 +131,7 @@ const MapContainer = () => {
         <label>Enter a Location: </label>
         <input
           className="location-input"
+          id="autocomplete"
           type="text"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
@@ -167,7 +188,7 @@ const MapContainer = () => {
                 : "No rating available :("}
               {}
             </li>
-            <li>Business Status: {showRestaurant.business_status}</li>
+            <li>{showRestaurant.vicinity}</li>
             <li>Check it out on Google Maps Below!</li>
           </ul>
         </div>
