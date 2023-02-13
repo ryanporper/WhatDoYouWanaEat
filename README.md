@@ -1,6 +1,8 @@
 # What Do You Wana Eat?
 >Work in Progress
 
+## Check out the [Live site here!](http://whatdoyouwanaeat.s3-website-us-east-1.amazonaws.com/)
+
 *A simple site designed to help you solve the age old question, What Do You Wana Eat?*
 
 ## Built using:
