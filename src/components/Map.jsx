@@ -112,7 +112,7 @@ const MapContainer = () => {
 				<br />
 				${place.vicinity}
 				</div>
-				<a target='_blank' href=https://maps.google.com/?q=${place.name}>View on Google Maps</a>`
+				<a target='_blank' href='https://www.google.com/maps/place/?q=place_id:${place.place_id}'>View on Google Maps</a>`
         );
         infowindow.open(map, marker);
       },
